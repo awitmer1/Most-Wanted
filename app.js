@@ -40,8 +40,7 @@ function searchPeopleDataSet(people) {
             results = searchByName(people);
             break;
         case 'traits':
-            //! TODO
-            // results = searchByTraits(people);
+            results = searchByTraits(people);
             break;
         default:
             return searchPeopleDataSet(people);
@@ -62,6 +61,12 @@ function searchByName(people) {
     const lastNameToSearchFor = prompt('Please enter the the last name of the person you are searching for.');
     const fullNameSearchResults = people.filter(person => (person.firstName.toLowerCase() === firstNameToSearchFor.toLowerCase() && person.lastName.toLowerCase() === lastNameToSearchFor.toLowerCase()));
     return fullNameSearchResults;
+}
+
+function searchByTraits(people) {
+    const traitToSearchFor = validatedPrompt('Please enter the trait you are searching for.', ['gender', 'dob', 'height', 'weight', 'eyeColor', 'occupation']);
+    const traitSearchResults = people.filter(person => person.traitToSearchFor === traitToSearchFor);
+    return traitSearchResults;
 }
 
 function mainMenu(person, people) {
