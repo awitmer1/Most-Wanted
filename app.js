@@ -57,16 +57,62 @@ function searchById(people) {
 }
 
 function searchByName(people) {
-    const firstNameToSearchFor = prompt('Please enter the the first name of the person you are searching for.');
-    const lastNameToSearchFor = prompt('Please enter the the last name of the person you are searching for.');
+    const firstNameToSearchFor = prompt('Please enter the first name of the person you are searching for.');
+    const lastNameToSearchFor = prompt('Please enter the last name of the person you are searching for.');
     const fullNameSearchResults = people.filter(person => (person.firstName.toLowerCase() === firstNameToSearchFor.toLowerCase() && person.lastName.toLowerCase() === lastNameToSearchFor.toLowerCase()));
     return fullNameSearchResults;
 }
 
 function searchByTraits(people) {
     const traitToSearchFor = validatedPrompt('Please enter the trait you are searching for.', ['gender', 'dob', 'height', 'weight', 'eyeColor', 'occupation']);
-    const traitSearchResults = people.filter(person => person.traitToSearchFor === traitToSearchFor);
-    return traitSearchResults;
+    
+    switch (traitToSearchFor) {
+        case "gender":
+            break;
+        case "dob":
+            break;            
+        case "height":
+            break;            
+        case "weight":
+            break;            
+        case "eyeColor":
+            break;   
+        case "occupation":
+            break;
+        default:
+            alert('Invalid input. Please try again.');
+    
+}}
+
+function searchByGender(people) {
+    const genderSearch = prompt('Please enter the gender you want to search for.');
+    const genderResults = people.filter(person => person.gender === genderSearch);
+    return genderResults;
+}
+function searchByDob (people) {
+    const dobSearch = prompt('Please enter the first name of the person you are searching for.');
+    const dobResults = people.filter(person => person.dob === dobSearch);
+    return dobResults;
+}
+function searchByHeight(people) {
+    const heightSearch = prompt('Please enter the first name of the person you are searching for.');
+    const heightResults = people.filter(person => person.height === heightSearch);
+    return heightResults;
+}
+function searchByWeight (people) {
+    const weightSearch = prompt('Please enter the first name of the person you are searching for.');
+    const weightResults = people.filter(person => person.weight === weightSearch);
+    return weightResults;
+}
+function searchByEyeColor(people) {
+    const eyeColorSearch = prompt('Please enter the first name of the person you are searching for.');
+    const eyeColorResults = people.filter(person => person.eyeColor === eyeColorSearch);
+    return eyeColorResults;
+}
+function searchByOccupation(people) {
+    const occupationSearch = prompt('Please enter the first name of the person you are searching for.');
+    const occupationResults = people.filter(person => person.occupation === occupationSearch);
+    return occupationResults;
 }
 
 function mainMenu(person, people) {
