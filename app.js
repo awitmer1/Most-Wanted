@@ -12,15 +12,65 @@ function displayWelcome() {
 function runSearchAndMenu(people) {
     const searchResults = searchPeopleDataSet(people);
 
-    if (searchResults.length > 1) {
-        displayPeople('Search Results', searchResults);
-    }
-    else if (searchResults.length === 1) {
+    if (searchResults.length === 1) {
         const person = searchResults[0];
         mainMenu(person, people);
+    }else if (searchResults.length > 1) {
+        displayPeople('Search Results', searchResults);
+
+        const continueSearch = prompt('Would you like to continue searching? y/n')
+            if (continueSearch == "y") {
+                results = runSearchAndMenu (searchResults);
+                displayPeople('Search Results', results);
+            }else {
+                return;
+            }
     }
     else {
         alert('No one was found in the search.');
+    }
+}
+// function runSearchAndMenu(people) {
+//     const searchResults = searchPeopleDataSet(people);
+
+//     if (searchResults.length > 1) {
+//         displayPeople('Search Results', searchResults);
+//         const continueSearch = prompt('Would you like to continue searching? y/n')
+//             if (continueSearch == "y") {
+//                 results = searchByTraits (searchResults);
+//                 displayPeople('Search Results', results);
+//             } 
+//             else {
+//                 return;
+//             }
+//     }
+//     else if (searchResults.length === 1) {
+//         const person = searchResults[0];
+//         mainMenu(person, people);
+//     }
+//     else {
+//         alert('No one was found in the search.');
+//     }
+// }
+
+function myRecursiveFunction(params){
+    if(params === condition){
+        // Base Case
+        return item;
+    }else{
+        //Recursive Case
+        return myRecursiveFunction(otherParams);
+    }
+}
+
+function RecursiveSearch(people){
+
+    if(searchResults.length === 1){
+        const person = searchResults[0];
+        mainMenu(person, people);
+    }else{
+        displayPeople('Search Results', searchResults);
+        return myRecursiveFunction(otherParams);
     }
 }
 
@@ -87,7 +137,7 @@ function searchByTraits(people) {
             break;
         default:
             alert('Invalid input. Please try again.');
-            return searchByTraits;
+            return searchByTraits(people);
     }
 
     return results;
