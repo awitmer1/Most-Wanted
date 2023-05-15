@@ -25,53 +25,7 @@ function runSearchAndMenu(people) {
             }else {
                 return;
             }
-    }
-    else {
-        alert('No one was found in the search.');
-    }
-}
-// function runSearchAndMenu(people) {
-//     const searchResults = searchPeopleDataSet(people);
-
-//     if (searchResults.length > 1) {
-//         displayPeople('Search Results', searchResults);
-//         const continueSearch = prompt('Would you like to continue searching? y/n')
-//             if (continueSearch == "y") {
-//                 results = searchByTraits (searchResults);
-//                 displayPeople('Search Results', results);
-//             } 
-//             else {
-//                 return;
-//             }
-//     }
-//     else if (searchResults.length === 1) {
-//         const person = searchResults[0];
-//         mainMenu(person, people);
-//     }
-//     else {
-//         alert('No one was found in the search.');
-//     }
-// }
-
-function myRecursiveFunction(params){
-    if(params === condition){
-        // Base Case
-        return item;
-    }else{
-        //Recursive Case
-        return myRecursiveFunction(otherParams);
-    }
-}
-
-function RecursiveSearch(people){
-
-    if(searchResults.length === 1){
-        const person = searchResults[0];
-        mainMenu(person, people);
-    }else{
-        displayPeople('Search Results', searchResults);
-        return myRecursiveFunction(otherParams);
-    }
+    }else {alert('No one was found in the search.');}
 }
 
 function searchPeopleDataSet(people) {
@@ -188,8 +142,7 @@ function mainMenu(person, people) {
 
     switch (mainMenuUserActionChoice) {
         case "info":
-            //! TODO
-            // displayPersonInfo(person);
+            displayPersonInfo(person);
             break;
         case "family":
             //! TODO
@@ -213,6 +166,20 @@ function mainMenu(person, people) {
 function displayPeople(displayTitle, peopleToDisplay) {
     const formatedPeopleDisplayText = peopleToDisplay.map(person => `${person.firstName} ${person.lastName}`).join('\n');
     alert(`${displayTitle}\n\n${formatedPeopleDisplayText}`);
+}
+
+function displayPersonInfo(person) {
+    alert(`
+    Id:  ${person.id}
+    Name:  ${person.firstName} ${person.lastName}
+    Gender:  ${person.gender}
+    Date of birth:  ${person.dob}
+    Height:  ${person.height}
+    Weight:  ${person.weight}
+    Eye color:  ${person.eyeColor}
+    Occupation:  ${person.occupation}
+    Parents:  ${person.parents}
+    Current Spouse:  ${person.currentSpouse}`)
 }
 
 function validatedPrompt(message, acceptableAnswers) {
