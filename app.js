@@ -145,9 +145,8 @@ function mainMenu(person, people) {
             displayPersonInfo(person);
             break;
         case "family":
-            //! TODO
-            // let personFamily = findPersonFamily(person, people);
-            // displayPeople('Family', personFamily);
+            let personFamily = findPersonFamily(person, people);
+            displayPeople('Family', personFamily);
             break;
         case "descendants":
             //! TODO
@@ -180,6 +179,20 @@ function displayPersonInfo(person) {
     Occupation:  ${person.occupation}
     Parents:  ${person.parents}
     Current Spouse:  ${person.currentSpouse}`)
+}
+
+function findPersonFamily(person, people) {
+    
+    let family = [];
+
+    for (let i = 0; i < person.parents.length; i++) {
+        family = family.concat(people.filter(el => el.id === person.parents[i]));
+    }
+    if (person.parents[0]) {
+        //find siblings logic
+    }
+
+    return family;
 }
 
 function validatedPrompt(message, acceptableAnswers) {
