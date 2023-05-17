@@ -189,16 +189,22 @@ function findPersonFamily(person, people) {
     for (let i = 0; i < person.parents.length; i++) {
         family = family.concat(people.filter(el => el.id === person.parents[i]));
     }
-    if (person.parents[0]) {
-        //find siblings logic
+    
+
+    // Find Siblings //
+
+    let siblings = [];
+    
+    siblings = people.filter(el => el.parents[0] === person.parents[0]);
+
+    debugger
+    if (siblings) {
+        family = family.concat(siblings)        
     }
     
-    
     // Find Spouse //
-    family = family.concat(people.filter(el => el.id === person.currentSpouse))
+    family = family.concat(people.filter(el => el.id === person.currentSpouse));
     
-
-
     return family;
 }
 
