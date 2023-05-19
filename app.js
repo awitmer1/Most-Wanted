@@ -190,7 +190,8 @@ function findPersonFamily(person, people) {
     }
     
     // Find Siblings //    
-    siblings = people.filter(el => el.parents[0] === person.parents[0] && el.firstName != person.firstName);
+    siblings = people.filter(el => el.parents.includes(person.parents) && el.firstName != person.firstName);
+    // siblings = people.filter(el => el.parents[0] === person.parents[0] && el.firstName != person.firstName);
 
     if (siblings) {
         family = family.concat(siblings)        
