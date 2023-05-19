@@ -149,9 +149,8 @@ function mainMenu(person, people) {
             displayPeople('Family', personFamily);
             break;
         case "descendants":
-            //! TODO
-            // let personDescendants = findPersonDescendants(person, people);
-            // displayPeople('Descendants', personDescendants);
+            let personDescendants = findPersonDescendants(person, people);
+            displayPeople('Descendants', personDescendants);
             break;
         case "quit":
             return;
@@ -190,14 +189,9 @@ function findPersonFamily(person, people) {
         family = family.concat(people.filter(el => el.id === person.parents[i]));
     }
     
+    // Find Siblings //    
+    siblings = people.filter(el => el.parents[0] === person.parents[0] && el.firstName != person.firstName);
 
-    // Find Siblings //
-
-    let siblings = [];
-    
-    siblings = people.filter(el => el.parents[0] === person.parents[0]);
-
-    debugger
     if (siblings) {
         family = family.concat(siblings)        
     }
@@ -206,6 +200,13 @@ function findPersonFamily(person, people) {
     family = family.concat(people.filter(el => el.id === person.currentSpouse));
     
     return family;
+}
+
+function findPersonDescendants(person, people) {
+
+    let descendants = people.filter(el => el.parents[0] === person.id);
+
+    return descendants;
 }
 
 function validatedPrompt(message, acceptableAnswers) {
