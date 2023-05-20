@@ -191,7 +191,6 @@ function findPersonFamily(person, people) {
     
     // Find Siblings //    
     siblings = people.filter(el => el.parents.includes(person.parents) && el.firstName != person.firstName);
-    // siblings = people.filter(el => el.parents[0] === person.parents[0] && el.firstName != person.firstName);
 
     if (siblings) {
         family = family.concat(siblings)        
@@ -204,8 +203,11 @@ function findPersonFamily(person, people) {
 }
 
 function findPersonDescendants(person, people) {
+debugger
+    
+    descendants = people.filter(el => el.parents[0] === person.id);
 
-    let descendants = people.filter(el => el.parents[0] === person.id);
+    descendants = descendants.concat(people.filter(el => el.parents.includes(descendants.id)));
 
     return descendants;
 }
