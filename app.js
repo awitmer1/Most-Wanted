@@ -205,9 +205,15 @@ function findPersonFamily(person, people) {
 function findPersonDescendants(person, people) {
 debugger
     
-    descendants = people.filter(el => el.parents[0] === person.id);
+    let children = people.filter(el => el.parents.includes(person.id));
+    let descendants = [];
 
-    descendants = descendants.concat(people.filter(el => el.parents.includes(descendants.id)));
+    descendants = descendants.concat(children)
+
+    for (let child of children) {
+        let grandChildren = people.filter(el => el.parents.includes(child.id))
+        descendants = descendants.concat(grandChildren)
+    }
 
     return descendants;
 }
