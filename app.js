@@ -110,13 +110,13 @@ function searchByDob (people) {
 }
 
 function searchByHeight(people) {
-    const heightSearch = prompt('Please enter the height of the person you are searching for.');
+    const heightSearch = parseInt(prompt('Please enter the height of the person you are searching for.'));
     const heightResults = people.filter(person => person.height === heightSearch);
     return heightResults;
 }
 
 function searchByWeight (people) {
-    const weightSearch = prompt('Please enter the weight of the person you are searching for.');
+    const weightSearch = parseInt(prompt('Please enter the weight of the person you are searching for.'));
     const weightResults = people.filter(person => person.weight === weightSearch);
     return weightResults;
 }
